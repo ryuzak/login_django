@@ -1,0 +1,49 @@
+
+.required{
+	color: #4BB05C;
+}
+
+/*Modal*/
+.row-modal{
+	justify-content: space-around;
+}
+
+.btn-modal{
+	width: 100px;
+	height: 60px;
+}
+
+
+.space-between{
+	justify-content: space-between;
+}
+
+
+.align-bottom{
+	align-items: flex-end;
+}
+
+.icon-img{
+	width: 28px;
+	height: 28px;
+	margin-right: 8px;
+}
+
+.icon-img-small{
+	width: 18px;
+	height: 18px;
+}
+
+.icon-list{
+	width: 50px;
+	height: 50px;
+}
+
+.carousel-img{
+	max-height: 300px;
+	/*max-width: 500px;*/
+}
+
+.txt-med{
+	font-size: 16px;
+}

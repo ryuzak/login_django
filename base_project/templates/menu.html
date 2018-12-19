@@ -1,0 +1,94 @@
+<!-- <li class="heading">
+    <h3 class="uppercase">Menú</h3>
+</li> -->
+<li class="nav-item  ">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="icon-diamond"></i>
+        <span class="title">Modulos Administrador</span>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub-menu">
+
+	    <li>
+	    	<a href="{% url 'adm_irrigating:irrigating_list' %}"> tipo de riego </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'adm_crop:crop_list' %}"> tipos de cultivos </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'adm_crop:cropvariety_list' %}"> variedades de cultivo </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'equipment:equipment_list' %}"> maquinaria </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'implements:implement_list' %}"> implementos </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'adm_inputcategory:inputcategory_list' %}"> categoria de insumos </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'adm_input:input_list' %}"> insumos </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'adm_pestcategory:pestcategory_list' %}"> categoria de plagas </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'adm_pest:pest_list' %}"> plagas </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'adm_diseasecategory:diseasecategory_list' %}"> categoria de enfermedades </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'adm_disease:disease_list' %}"> enfermedades </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'accounts:users_list' %}"> usuarios </a>
+	    </li>
+    </ul>
+</li>
+
+<!--modulos para el cliente-->
+<li class="nav-item  ">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="icon-diamond"></i>
+        <span class="title">Modulos Cliente</span>
+        <span class="arrow"></span>
+    </a>
+    <ul class="sub-menu">
+	    <li>
+	    	<a href="{% url 'cust_equipment:custequipment_list' %}"> maquinaria </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'cust_maintenance:custmaintenance_list' %}"> mantenimiento </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'cust_implement:custimplement_list' %}"> implementos </a>
+	    </li>
+		<li>
+	    	<a href="{% url 'cust_storage:storage_list' %}"> Bodega </a>
+	    </li>
+		<li>
+	    	<a href="{% url 'cust_input:custinput_list' %}"> Inv. Insumos </a>
+	    </li>
+	    <li>
+	    	<a href="{% url 'cust_field:field_list' %}"> campos </a>
+	    </li>
+    </ul>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

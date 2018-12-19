@@ -1,0 +1,122 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom-lxl.css' %}">
+
+<div class="container-fluid">
+
+	<!-- Nombre Parcela -->
+    {% if has_station %}
+        <h5 class="text-center"><a href="{% url 'cust_field:field_details' field.id 'pane' %}">{{field.name}}</a>
+            {% if stations_ss > 0 %}
+                <a href="{% url 'cust_field:field_details' field.id 'dash' %}"><img src="/media/sam_pictures/sams_.png" alt="" width="25" height="25" title="Cantidad: {{ stations_ss }}"></a>
+            {% endif %}
+            {% if stations_ws > 0 %}
+                <a href="{% url 'cust_field:field_details' field.id 'dash' %}"><img src="/media/sam_pictures/samws.png" alt="" width="25" height="25" title="Cantidad: {{ stations_ws }}"></a>
+            {% endif %}
+        </h5>
+    {% else %}
+        <h5 class="text-center"><a href="{% url 'cust_field:field_details' field.id 'pane' %}">{{field.name}}</a>
+    {% endif %}
+	<!-- Datos Parcela -->
+	<div class="row mb-2">
+		<div class="col-md-3 col-sm-3 text-center txt-med">
+			<img class="icon-img-small" src= "{% static 'assets/icons/cultivo_icono.png' %}"/><br> {{field.crop}}
+		</div>
+		<div class="col-md-3 col-sm-3 text-center txt-med">
+			<img class="icon-img-small" src= "{% static 'assets/icons/superficie_icono.png' %}"/><br> {{field.area|floatformat:2}}&nbsp;Ha.
+		</div>
+		<div class="col-md-3 col-sm-3 text-center txt-med">
+			<img class="icon-img-small" src= "{% static 'assets/icons/suelo_icono.png' %}"/><br> {{field.get_soilacttexture_display}}
+		</div>
+		<div class="col-md-3 col-sm-3 text-center txt-med">
+			<img class="icon-img-small" src="{% static 'assets/icons/riego_icono.png' %}"/><br>
+			{% if field.irrigating %}
+				{{field.irrigating}}
+			{% else %}
+				-
+			{% endif %}
+		</div>
+	</div>
+
+	<!-- Datos Clima -->
+	<div class="row mb-2">
+		<!-- Icono Clima -->
+		<div class="col-md-4 text-center">
+			<div class="icon-wrap">
+				<div class="icon">
+					<i class="wi wi-forecast-io-{{climate_data.icon}}" style="font-size:35px"></i>
+				</div>
+			</div>
+			<h4><strong>{{climate_data.temperature}} ºC</strong></h4>
+		</div>
+
+		<!-- Temperatura -->
+		<div class="col-md-8">
+			<div class="text-center txt-med">
+				{{climate_data.temperatureMin}}&nbsp;<strong>ºC</strong> / {{climate_data.temperatureMax}}&nbsp;<strong>ºC</strong>
+			</div>
+			<div class="text-center txt-med">
+				Sensación Térmica: <strong>{{climate_data.apparentTemperature}}&nbsp;ºC </strong>
+			</div>
+			<div class="text-center txt-med">
+				Precipitación: <strong>{{climate_data.precipIntensity}}&nbsp;mm/hr.</strong>
+			</div>
+			<div class="text-center txt-med">
+				Humedad Relativa: <strong>{{climate_data.relativeHumidity}}&nbsp;%</strong>
+			</div>
+		</div>
+	</div>
+
+	<!-- Imagen y Actividades -->
+	{% if activities %}
+
+		<div class="row">
+			<!-- Imagen -->
+			<div class="col-md-6 text-center">
+				{% if imagen.image %}
+					<img src="{{imagen.image.url}}" width="150" height="100">
+				{% endif %}
+			</div>
+
+			<!-- Lista Actividades -->
+			<div class="col-md-6" >
+
+				<!-- Proximas 5 Actividades -->
+				{% for act in activities %}
+
+					<!-- Condiciones Tipo de Actividad -->
+					{% if act.activity == 'labor' %}
+						<a href="{% url 'cust_doneactivities:doneactivity_edit' act.id act.cropfield.first.id 'd' %}" class="card alert alert-primary text-center" >
+
+					{% elif act.activity == 'irrigation' %}
+						<a href="{% url 'cust_doneactivitiesirrigating:activityirrigating_edit' act.id act.cropfield.first.id 'd' %}" class="card alert alert-primary text-center" >
+
+					{% elif act.activity == 'input' %}
+						<a href="{% url 'cust_doneactivitiesinput:activityinput_edit' act.id act.cropfield.first.id 'd' %}" class="card alert alert-primary text-center" >
+
+					{% elif act.activity == 'sowing' %}
+						<a href="{% url 'cust_doneactivitiessowing:activitysowing_edit' act.id act.cropfield.first.id 'd' %}" class="card alert alert-primary text-center" >
+
+					{% elif act.activity == 'harvest' %}
+						<a href="{% url 'cust_doneactivitiesharvest:activityharvest_edit' act.id act.cropfield.first.id 'd' %}" class="card alert alert-primary text-center" >
+
+					{% endif %}
+
+							<strong>{{act.name}} - {{act.date_init}}</strong>
+						</a>
+
+				{% endfor %}
+			</div>
+		</div>
+
+	{% else %}
+
+		<!-- Imagen -->
+		<div class="col-md-12 text-center">
+			{% if imagen.image %}
+				<img src="{{imagen.image.url}}" width="150" height="100">
+			{% endif %}
+		</div>
+
+	{% endif %}
+
+</div>

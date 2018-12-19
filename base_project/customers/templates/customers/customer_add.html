@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!-- BEGIN PAGE BASE CONTENT -->
+<!-- Header Dashboard -->
+{% block header %}Cliente{% endblock %}
+<!-- Breadcrum -->
+{% block breadcrumb %}Agregar Cliente{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+    <link href="{% static 'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+<!-- end Custom CSS -->
+
+{% block content %}
+<!-- BEGIN PAGE BASE CONTENT -->
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN VALIDATION STATES-->
+        <div class="portlet light portlet-fit portlet-form bordered" id="form_wizard_1">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class=" icon-user font-green"></i>
+                    <span class="caption-subject font-green sbold uppercase">Cliente</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <!-- BEGIN FORM-->
+                <form action="" class="form-horizontal" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <div class="form-body">
+                      {% if form.errors %}
+                        <div class="alert alert-danger">
+                          <button class="close" data-dismiss="alert"></button> 
+                          Tienes algunos errores. Favor de verificarlos.
+                        </div>                      
+                      {% endif %}
+                        <h3 class="form-section">{{header}}</h3>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.name.labe}}">{{form.name.label}} <span class="required">*</span> </label>
+                            <div class="col-md-6">
+                                {{ form.name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.website.labe}}">{{form.website.label}} </label>
+                            <div class="col-md-6">
+                                {{ form.website}}
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.phone.label}}">{{form.phone.label}} <span class="required">*</span> </label>
+                            <div class="col-md-6">
+                               {{form.phone}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.area_adquired.label}}">{{form.area_adquired.label}} </label>
+                            <div class="col-md-6">
+                               {{form.area_adquired}}
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.street.label}}">{{form.street.label}} </label>
+                            <div class="col-md-6">
+                               {{form.street}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.nostreet.label}}">{{form.nostreet.label}} </label>
+                            <div class="col-md-6">
+                               {{form.nostreet}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.colony.label}}">{{form.colony.label}} </label>
+                            <div class="col-md-6">
+                               {{form.colony}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.zipcode.label}}">{{form.zipcode.label}} </label>
+                            <div class="col-md-6">
+                               {{form.zipcode}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.email.label}}">{{form.email.label}} <span class="required">*</span> </label>
+                            <div class="col-md-6">
+                               {{form.email}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.farm_type.label}}">{{form.farm_type.label}} </label>
+                            <div class="col-md-6">
+                               {{form.farm_type}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.country.label}}">{{form.country.label}}</label>
+                            <div class="col-md-6">
+                               {{form.country}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.state.label}}">{{form.state.label}}</label>
+                            <div class="col-md-6">
+                               {{form.state}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="{{form.profile.label}}">{{form.profile.label}} <span class="required">*</span> </label>
+                            <div class="col-md-6"> 
+                               {{form.profile}}
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                          <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="submit" class="btn green">Guardar</button>
+                                <a href="#" class="btn default">Cancelar</a>
+                            </div>
+                          </div>
+                       </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END VALIDATION STATES-->
+    </div>
+</div>
+<!-- END PAGE BASE CONTENT -->
+{% endblock %}
+
+<!-- Custom JS -->
+{% block js %}
+    <script src="{% static 'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js' %}" type="text/javascript"></script>
+{% endblock %}
+<!-- End Custom JS -->
+    
+<!-- Custom JS After App.js-->
+{% block js_script %}
+{% endblock %}
+<!-- End Custom JS After App.js -->
+
+<!-- Document ready functions -->
+<!-- End document ready functions -->

@@ -1,0 +1,58 @@
+ <!-- validacion de formulario de catalogos y genericos -->
+    {% for field in form %}
+        {% for error in field.errors %}
+            {% ifequal field.auto_id 'id_coords' %}
+    			$("#mapa").addClass('has-error');
+    			$("#mapa").before("<span class='help-block-error'><strong><h4>{{error}}</h4></strong></span>");
+    		{% else %}
+	    		$("#{{field.auto_id}}").addClass('has-error');
+	            $("#{{field.auto_id}}").after("<span class='help-block-error'>{{error}}</span>");
+            {% endifequal %}
+        {% endfor %}
+    {% endfor %}
+
+<!-- valiacion para formulario basico de actividades -->
+
+    {% for field in activityform %}
+    	{% for error in field.errors %}
+    		{% ifequal field.auto_id 'id_coords' %}
+    			$("#mapa").addClass('has-error');
+    			$("#mapa").after("<span class='help-block-error'>{{error}}</span>");
+    		{% else %}
+	    		$("#{{field.auto_id}}").addClass('has-error');
+	            $("#{{field.auto_id}}").after("<span class='help-block-error'>{{error}}</span>");
+            {% endifequal %}
+    	{% endfor %}
+    {% endfor %}
+
+<!-- validacion para formulario extendido de actividades -->
+
+    {% for field in detailsactivityform %}
+    	{% for error in field.errors %}
+    		$("#{{field.auto_id}}").addClass('has-error');
+            $("#{{field.auto_id}}").after("<span class='help-block-error'>{{error}}</span>");
+    	{% endfor %}
+    {% endfor %}
+
+<!-- validacion para formulario de detecciones -->
+
+    {% for field in detectionform %}
+    	{% for error in field.errors %}
+    		{% ifequal field.auto_id 'id_coords' %}
+    			$("#mapa").addClass('has-error');
+    			$("#mapa").after("<span class='help-block-error'>{{error}}</span>");
+    		{% else %}
+	    		$("#{{field.auto_id}}").addClass('has-error');
+	            $("#{{field.auto_id}}").after("<span class='help-block-error'>{{error}}</span>");
+            {% endifequal %}
+    	{% endfor %}
+    {% endfor %}
+
+<!-- validacion para formulario de log de detecciones -->
+
+    {% for field in logform %}
+		{% for error in field.errors %}
+			$("#{{field.auto_id}}").addClass('has-error');
+	        $("#{{field.auto_id}}").after("<span class='help-block-error'>{{error}}</span>");
+		{% endfor %}
+    {% endfor %}

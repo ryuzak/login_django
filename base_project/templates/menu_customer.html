@@ -1,0 +1,54 @@
+
+
+<li class="nav-item {% if 'field' in request.path and '/field/activity/' not in request.path and '/field/detection/' not in request.path  %} active {% endif%} ">
+	<a href="{% url 'cust_field:field_list' %}">
+		<i class="icon-grid"></i>
+		<span>Parcelas</span>
+	</a>
+</li>
+
+<li class="nav-item {% if '/calendar/' in request.path %} active {% endif%} ">
+	<a href="{% url 'cust_calendar:custcalendar' %}">
+		<i class="icon-calendar"></i>
+		<span>Calendario</span>
+	</a>
+</li>
+
+<li class="nav-item {% if '/field/detection/' in request.path %} active {% endif%} ">
+	<a href="{% url 'cust_detectionsactivity:general_list' %}">
+		<i class="icon-grid"></i>
+		<span>Detecciones</span>
+	</a>
+</li>
+
+<li class="nav-item {% if '/climate/eightdays/' in request.path %} active {% endif%} ">
+	<a href="{% url 'cust_climate:eight_days' %}">
+		<i class="fa fa-dot-circle-o "></i>
+		<span>Clima</span>
+	</a>
+</li>
+
+<li class="sub-menu {% if '/markets/' in request.path %} active open {% endif %}">
+	<a href="javascript:;">
+		<i class=" ti-home"></i>
+		<span>Mercados</span>
+	</a>
+	<ul class="sub">
+		<li class=" {% if '/products/' in request.path %} active {% endif%} ">
+			<a href="{% url 'cust_markets:products' %}"> Precio de Productos </a>
+		</li>
+
+		<li class=" {% if '/surface/' in request.path %} active {% endif%}">
+			<a href="{% url 'cust_surfacesown:surface' %}"> Superficie Sembrada </a>
+		</li>
+	</ul>
+</li>
+
+<li class="nav-ite {% if '/accounts/' in request.path and '/cycles/' in request.path %} active open {% endif %}">
+	<a href="{% url 'cust_cycles:custcycles_list' %}">
+		<i class="icon-grid"></i>
+		<span>Ciclos</span>
+	</a>
+</li>
+
+

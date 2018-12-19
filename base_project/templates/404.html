@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!-- BEGIN PAGE BASE CONTENT -->
+<!-- Header Dashboard -->
+{% block header %}404 - Página no encontrada{% endblock %}
+<!-- Breadcrum -->
+{% block breadcrumb %}Página no encontrada{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+
+    <link href="{% static 'assets/pages/css/error.min.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+<!-- end Custom CSS -->
+
+{% block content %}
+<!-- BEGIN PAGE BASE CONTENT -->
+{% static 'assets/pages/css/error.min.css' %}
+<div class="row">
+    <div class="col-md-12 page-404">
+        <div class="number font-green"> 404 </div>
+        <div class="details">
+            <h3>404 Página no encontrada</h3>
+            <p> La página que busca no se encuentra
+                <br/>
+                <a href="{% url 'authorization:dashboard' %}"> Regresar a Home</a></p>
+        </div>
+    </div>
+</div>
+<!-- END PAGE BASE CONTENT -->
+  {% endblock %}
+
+<!-- Custom JS -->
+{% block js %}
+    <script src="{% static 'assets/global/plugins/jquery-validation/js/jquery.validate.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/global/plugins/jquery-validation/js/additional-methods.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'assets/global/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js' %}" type="text/javascript"></script>
+{% endblock %}
+<!-- End Custom JS -->

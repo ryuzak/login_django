@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+<!-- BEGIN PAGE BASE CONTENT -->
+<!-- Header Dashboard -->
+{% block header %} Usuarios {% endblock %}
+
+<!-- Breadcrum -->
+{% block breadcrumb %}Actualizar perfil{% endblock %}
+
+<!-- Custom CSS -->
+{% block css %}
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom-lxl.css' %}">
+
+{% endblock %}
+<!-- end Custom CSS -->
+
+{% block content %}
+<!-- BEGIN PAGE BASE CONTENT -->
+
+<div class="card card-shadow mb-4">
+	<div class="card-header">
+		<div class="card-title">
+			<i class="icon-user"></i> Información del Usuario
+		</div>
+	</div>
+
+	<!-- Card Body -->
+	<div class="card-body form">
+		<form action="" class="form-horizontal" enctype="multipart/form-data" method="post">
+			<div class="form-body">
+				{% csrf_token %}
+				{% if form.errors %}
+					<div class="alert alert-danger">
+						<button class="close" data-dismiss="alert"></button>
+						Tienes algunos errores. Favor de verificarlos.
+					</div>
+				{% endif %}
+
+				<div class="row">
+					
+					<div class="col-md-4">
+						<label class="control-label">{{form.picture.label}}</label>
+						<div class="container mb-2 text-center">
+							{% if image.picture %}
+								<img class="mb-2" style="width: 150px; height: 150px;" src="{{image.picture.url}}">
+								<!-- <a href="javascript:;" class="btn btn-danger fileinput-exists" data-dismiss="fileinput"> Eliminar </a> -->
+							{% endif %}
+						</div>
+						
+						<label for="" class="control-label"> Cambiar Foto </label>
+						<div class="container">
+							{{form.picture}}
+						</div>
+					</div>
+
+					<div class="col-md-8">
+
+						<!-- Nombre Apellido -->
+						<div class="row">
+
+							<div class="col-md-6 form-group ">
+								<label class="control-label" for="{{form.username.id}}">{{form.first_name.label}} <span class="required">*</span></label>
+								{{form.first_name}}
+							</div>
+
+							<div class="col-md-6 form-group ">
+								<label class="control-label" for="{{form.username.id}}">{{form.last_name.label}} <span class="required">*</span></label>
+									{{form.last_name}}
+							</div>
+						</div>
+
+						<!-- Correo Telefono -->
+						<div class="row">
+
+							<div class="col-md-6 form-group ">
+								<label class="control-label" for="{{form.email.id}}">{{form.email.label}} <span class="required">*</span></label>
+								{{form.email}}
+							</div>
+
+							<div class="col-md-6 form-group ">
+								<label class="control-label " for="{{form.phone.id}}">{{form.phone.label}} <span class="required">*</span></label>
+									{{form.phone}}
+							</div>
+						</div>
+
+						<!-- Usuario -->
+						<div class="row">
+							<div class="col-md-6 form-group ">
+								<label class="control-label" for="{{form.user_type.id}}">{{form.user_type.label}}</label>
+								{{form.user_type}}
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+
+				<!-- Botones -->
+				<div class="form-actions text-center">
+					<button type="submit" class="btn btn-primary" id="btn-sub">Guardar</button>
+					<a href="/" class="btn btn-secondary">Cancelar</a>
+				</div>
+				
+			</div>
+		</form>
+		
+	</div>
+	
+</div>
+
+<!-- END PAGE BASE CONTENT -->
+{% endblock %}
+
+<!-- Custom JS -->
+{% block js %}
+	
+	<script src="{% static 'assets/vendor/ajaxconfig.js'%}"></script>
+
+	<!-- <script src="{% static 'cust_buyer/js/validate.js' %}"></script> -->
+	<!-- <script src="{% static 'assets/global/scripts/validate.numeric.js' %}"</script> -->
+	<!-- <script src="{% static 'assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js' %}" type="text/javascript"></script> -->
+	<!-- <script src="{% static 'assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js' %}" type="text/javascript"></script> -->
+{% endblock %}
+<!-- End Custom JS -->
+
+<!-- Custom JS After App.js-->
+{% block js_script %}
+	<script src="{% static 'assets/pages/scripts/form-input-mask.js' %}" type="text/javascript"></script>
+{% endblock %}
+<!-- End Custom JS After App.js -->
+
+<!-- Document ready functions -->
+<!-- End document ready functions -->
